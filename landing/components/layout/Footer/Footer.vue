@@ -48,7 +48,7 @@
     .footer-top-part {
         display: flex;
         align-items: center;
-        height: 100vh;
+        height: 110vh;
         width: 100%;
         background: url("/Img_3.png") center center no-repeat;
     }
