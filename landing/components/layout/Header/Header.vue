@@ -29,6 +29,7 @@
         height: 70px;
         line-height: 70px;
         padding: 0 60px;
+        z-index: 9999999;
         a {
             color: $color-header-text;
         }
