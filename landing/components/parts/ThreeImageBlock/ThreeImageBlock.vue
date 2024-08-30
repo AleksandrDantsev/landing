@@ -4,8 +4,9 @@
             titles: string[];
             textContent: {textClass: string, text: string};
             images: string[] | null[];
-            stainsImages: string[];
+            stainsImages: Array<string | null>;
             backgroundColorClass: string;
+            titlesFontSize?: string,
         };
     }
 
@@ -18,23 +19,23 @@
         <div class="block-three-wrapper">
             <div class="block-part-one">
                 <div class="image-block-first">
-                    <div class="stains">
+                    <div class="stains" v-if="content.stainsImages[0]">
                         <img :src="content.stainsImages[0]" alt=" " class="staing-image"></img>
                     </div>
-                    <img class="image-first" :src="content.images[0]" alt="earing">
+                    <img class="image-first" v-if="content.images[0]" :src="content.images[0]" alt="earing">
                 </div>
                 <div class="background-hand" v-if="content.stainsImages[1]">
                     <img class="background-image-hand" :src="content.stainsImages[1]" alt="hand">
                 </div>
             </div>
             <div class="block-part-two">
-                <div class="centr-block-image">
+                <div class="centr-block-image" v-if="content.images[1]">
                     <img class="image-second" :src="content.images[1]" alt="hands">
                 </div>
             </div>
             <div class="block-part-three">
                 <div class="text-block">
-                    <div class="title">
+                    <div class="title" :class="content.titlesFontSize || ''">
                         <h2 v-for="title in content.titles" :key="title">{{ title }}</h2>
                     </div>
                     <div class="text-content" :class="content.textContent.textClass">
@@ -46,24 +47,33 @@
                 </div>
             </div>
         </div>
+        <slot></slot>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
 
+
     .gray-back {
-        background-color: #dfe0e0;
+        background-color: #ddd4c1;
     }
 
     .pink-back {
         background-color: #e3d8e7;
     }
 
+    .blue-back {
+        background-color: #acc7d8;
+    }
+
     .block-three {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: relative;
         width: 100%;
-        height: 120vh;
+        min-height: 110vh;
         padding: 100px 0;
         z-index: -25;
     }
@@ -115,6 +125,7 @@
         left: -30%;
         width: 100%;
         height: 100%;
+        object-fit: contain;
     }
     .text-block {
         display: flex;
@@ -123,6 +134,7 @@
         height: 100%;
     }
     .title {
+        margin: 25px 0;
         h2 {
             color: #fff;
             font-size: 3.8rem;
@@ -135,7 +147,7 @@
     .main-page-text {
         p {
             color: #fff;
-            font-size: 1.7rem;
+            font-size: 1.4rem;
             line-height: 2.1rem;
             text-transform: uppercase;
         }
@@ -170,6 +182,20 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+        }
+    }
+    .title-size-middle {
+        h2 {
+            transform: translateX(-55px);
+            font-size: 2.6rem;
+        }
+    }
+    .about-us-page-text {
+        p {
+            font-size: 1.1rem;;
+            color: #474747;
+            line-height: 1.3rem;
+            transform: translateX(20%)
         }
     }
 </style>
