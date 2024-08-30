@@ -6,7 +6,8 @@ interface Props {
         titleTop: string,
         titleBottom: string,
         text: string,
-        images: [],
+        images: string[],
+        colorBackClass: string,
     },
 }
 
@@ -15,7 +16,7 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-    <div class="telling-block">
+    <div class="telling-block" :class="content.colorBackClass">
         <div class="main-image-block">
             <img :src="content.mainIMG" alt="#" class="main-image">
         </div>
@@ -41,14 +42,21 @@ const props = defineProps<Props>();
 </template>
 
 <style lang="scss" scoped>
+
+    .blue-back {
+        background-color: #bfcfcd;
+    }
+
+    .purple-back {
+        background-color: #dbd2e2;
+    }
+
     .telling-block {
         position: relative;
         display: flex;
         width: 100%;
-        height: 110vh;
-        padding: 100px 0;
+        padding: 140px 0;
         z-index: -10;
-        background-color: #bfcfcd;
     }
     .main-image-block {
         width: 40%;
@@ -69,9 +77,10 @@ const props = defineProps<Props>();
     }
     .title-block {
         transform: translateX(-20%);
+        margin-bottom: 40px;
         h3 {
             font-size: 4rem;
-            color: #fff;
+            color: #ffffff;
         }
     }
     .info-block {
@@ -107,10 +116,10 @@ const props = defineProps<Props>();
     }
     .color-line {
         width: 100%;
-        height: 130px;
-        background-color: #f5f5f5;
+        height: 250px;
+        background-color: #f1f1f1;
         position: absolute;
         z-index: -1;
-        bottom: 0;
+        bottom: 0px;
     }
 </style>
