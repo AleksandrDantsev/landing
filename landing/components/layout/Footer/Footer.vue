@@ -69,6 +69,7 @@
         font-size: 3.8rem;
         p {
             color: $colorText;
+            text-shadow: 0 1px 2px #53535391;
             margin: 15px 0;
         }
     }
@@ -85,7 +86,7 @@
         display: flex;
         align-items: center;
         height: 380px;
-        background-color: #ddd2d2;
+        background-color: #95a78a;
         padding-bottom: 50px;
     }
     .footer-bottom-part-wrapper {
