@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { VitePWA } from 'vite-plugin-pwa'
 export default defineNuxtConfig({
+  css: [
+    '~/node_modules/swiper/swiper-bundle.min.css',
+    '~/node_modules/swiper/modules/navigation.css', // Стили для навигации
+    '~/node_modules/swiper/modules/pagination.css', // Стили для пагинации
+    '~/node_modules/swiper/modules/parallax-element.css' 
+  ],
   vite: {
     plugins: [
       VitePWA({
