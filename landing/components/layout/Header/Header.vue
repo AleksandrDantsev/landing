@@ -4,16 +4,16 @@
 
 <template>
     <header class="header">
-        <div class="logo"><NuxtLink activeClass="active-link" to="/">Cure</NuxtLink></div>
+        <div class="logo"><NuxtLink to="/">Cure</NuxtLink></div>
         <nav class="navigation">
             <ul class="navigation-list">
-                <li><NuxtLink activeClass="active-link" to="/menus">Menus</NuxtLink></li>
+                <li><NuxtLink activeClass="active-link" to="/menus/nails">Menus</NuxtLink></li>
                 <li><NuxtLink activeClass="active-link" to="/about">About & Careers</NuxtLink></li>
                 <li><NuxtLink activeClass="active-link" to="/contacts">Contact Us</NuxtLink></li>
             </ul>
         </nav>
         <div class="link-to-books">
-            <NuxtLink activeClass="active-link" to="/books">Book an Appointment</NuxtLink>
+            <NuxtLink to="/books">Book an Appointment</NuxtLink>
         </div>
     </header>
 </template>
@@ -40,14 +40,42 @@
     .navigation-list {
         width: 100%;
         display: flex;
+        align-items: center;
         padding-left: 40px;
         justify-content: space-around;
+        li {
+            position: relative;
+            height: min-content;
+          
+        }
+        a {
+            position: relative;
+            padding: 5px 0;
+            font-size: 17px;
+            &::before {
+            content: "";            
+            position: absolute;      
+            left: 50%;            
+            bottom: -2px;
+            width: 0;                
+            height: 1px;           
+            background-color: #fff;
+            transition: width 0.2s ease-out, left 0.2s ease-out; 
+        }
+        &:hover::before {
+            left: 0;              
+            width: 100%;  
+        }
+        }
     }
     .active-link {
-        color: green !important;
+        border-bottom: solid 1px #fff;
+        &:hover::before {
+            display: none;
+        }
     }
     .logo {
-        font-size: 30px;
+        font-size: 35px;
         color: $color-header-text;
     }
     .link-to-books {
