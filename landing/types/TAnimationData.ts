@@ -1,8 +1,8 @@
 export type TAnimationData = {
     [key: string]: Array<{
+        type: 'to' | 'from' | "fromTo",
         animateName: string,
         animation: {},
-        scrollTriggerBlock: string,
-        scrollTriggerData?: {},
+        scrollTriggerData?: Record<string, any>
     }>
 };
