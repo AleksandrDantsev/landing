@@ -6,7 +6,7 @@
 </script>
 
 <template>
-    <div class="wax-menu gray-back">
+    <article class="wax-menu gray-back">
         <div class="wax-menu-conteiner">
             <div class="wax-menu-title">
                 <h2>Wax Menu</h2>
@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>

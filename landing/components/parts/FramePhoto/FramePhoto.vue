@@ -14,10 +14,10 @@
 </script>
 
 <template>
-    <div class="frame-image-block">
+    <article class="frame-image-block">
         <div class="frame-left" :class="content.backgroundColorLeft">
             <div class="frame-left-img-conteiner">
-                <img src="/Img_introducing.webp" alt=" ">
+                <img src="/Img_introducing.webp" alt=" " class="lazy-img">
             </div>
         </div>
         <div class="frame-right">
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>

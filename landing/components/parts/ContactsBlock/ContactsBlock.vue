@@ -5,11 +5,11 @@
 </script>
 
 <template>
-    <div class="contacts-block">
+    <article class="contacts-block">
         <div class="contacts-block-wrapper">
             <ContactsBlockList v-for="address in addressLinks" :key="address.titleOfList" :content="address"/>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>

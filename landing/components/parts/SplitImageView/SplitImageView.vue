@@ -4,17 +4,17 @@
 </script>
 
 <template>
-    <div class="split-image-view gray-back">
+    <article class="split-image-view gray-back">
         <div class="left-image-container">
-            <img src="/img-mood-4.webp" alt="" class="left-image">
+            <img src="/img-mood-4.webp" alt="" class="left-image lazy-img">
         </div>
         <div class="right-image-container">
             <div class="right-image-wrapper">
-                <img src="/img-mood-23.webp" alt="" class="right-image">
-                <img src="/blue-dots-big-right.png" alt="" class="stain">
+                <img src="/img-mood-23.webp" alt="" class="right-image lazy-img">
+                <img src="/blue-dots-big-right.png" alt="" class="stain lazy-img">
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>

@@ -31,8 +31,8 @@
                         </div>
                     </div>
                     <div class="image">
-                        <img class="dots-stain-back" src="/grey-green-group.png" alt=" ">
-                        <img src="/img-section-1-1.webp" alt=" ">
+                        <img class="dots-stain-back lazy-img" src="/grey-green-group.png" alt=" ">
+                        <img src="/img-section-1-1.webp" alt=" " class="lazy-img">
                     </div>
                 </div>
             </div>
