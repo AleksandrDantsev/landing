@@ -66,7 +66,7 @@
     }
     .switcher-type {
         position: relative;
-        top: -30px;
+        top: -100px;
         z-index: 10;
         height: 120px;
         min-width: 40%;
