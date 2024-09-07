@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+    import { ref, onMounted } from 'vue';
+    import { useGsapAnimation } from '~/composable/useGsapAnimation';
+    import { collage } from '~/data/gsapAnimation';
 
     interface Props {
         content: {
@@ -11,25 +14,34 @@
         };
     }
 
+    const triggerBlock = ref();
+
+
+    onMounted(() => {
+        console.log(triggerBlock)
+        useGsapAnimation(triggerBlock, collage);
+    })
+
+
     defineProps<Props>();
 </script>
 
 <template>
-    <div class="collage" :class="content.backColorClass">
+    <article class="collage" :class="content.backColorClass" ref="triggerBlock">
         <div class="collage-wrapper">
-            <div class="title">
+            <div class="title title-collage-anim">
                 <div class="flower">
-                    <img src="/flower.png" alt=" ">
+                    <img src="/flower.png" alt=" " class="lazy-img">
                 </div>
                 <h3>{{ content.nameBlock }}</h3>
             </div>
             <div class="blocks">
                 <div class="left-block">
                     <div class="stain-left" v-if="content.stains[0]">
-                        <img :src="content.stains[0]" alt=" ">
+                        <img :src="content.stains[0]" alt=" " class="lazy-img">
                     </div>
                     <div class="image-left">
-                        <img :src="content.block1.image" alt=" ">
+                        <img :src="content.block1.image" alt=" " class="image-left-collage-anim lazy-img">
                     </div>
                     <div class="left-content">
                         <div class="left-title" v-if="content.block1.title">
@@ -42,28 +54,28 @@
                 </div>
                 <div class="center-block">
                     <div class="image-center">
-                        <img :src="content.block2.image" alt=" ">
+                        <img :src="content.block2.image" alt=" " class="lazy-img">
                     </div>
                 </div>
                 <div class="right-block">
                     <div class="right-content">
-                        <div class="right-text">
+                        <div class="right-text right-text-collage-anim">
                             <p>{{ content.block3.text }}</p>
                         </div>
-                        <div class="apply-email" v-if="content.block3.link">
+                        <div class="apply-email right-email-collage-anim" v-if="content.block3.link">
                             <NuxtLink :to="content.block3.link">{{ content.block3.nameLink }}</NuxtLink>
                         </div>
                     </div>
                     <div class="image-right">
-                        <img :src="content.block3.image" alt=" ">
+                        <img :src="content.block3.image" alt=" " class="image-right-collage-anim lazy-img">
                     </div>
                     <div class="stain-right" v-if="content.stains[1]">
-                        <img :src="content.stains[1]" alt=" ">
+                        <img :src="content.stains[1]" alt=" " class="lazy-img">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </article>
 </template>
 
 <style lang="scss" scoped>

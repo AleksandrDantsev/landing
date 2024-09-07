@@ -1,19 +1,31 @@
 <script lang="ts" setup>
+    import { ref, onMounted } from 'vue';
+    import { footer } from '~/data/gsapAnimation';
+    import { useGsapAnimation } from '~/composable/useGsapAnimation';
+
+    const triggerBlock = ref();
+
+    onMounted(() => {
+        if (triggerBlock.value) {
+            useGsapAnimation(triggerBlock, footer);
+        }
+    })
 
 </script>
 
 <template>
     <footer>
-        <div class="footer-top-part">
+        <div class="footer-top-part" ref="triggerBlock">
             <div class="top-footer-wrapper">
                 <div class="top-inscription">Calling all Nail Techs and Waxing Specialists</div>
                 <div class="to-join-us">
-                    <p>We invite</p>
-                    <p>you to join</p>
-                    <p>Team Cure.</p>
+                    <p class="text-footer-anim">We invite</p>
+                    <p class="text-footer-anim">you to join</p>
+                    <p class="text-footer-anim">Team Cure.</p>
                 </div>
                 <div class="mail"><NuxtLink to="mailto:wena@gmail.com">wena@gmail.com</NuxtLink></div>
             </div>
+            <img src="/Img_3.png" alt=" " class="footer-top-part-image lazy-img">
         </div>
         <div class="footer-bottom-part">
             <div class="footer-bottom-part-wrapper">
@@ -46,11 +58,21 @@
     $colorText: #ffffff;
 
     .footer-top-part {
+        position: relative;
         display: flex;
         align-items: center;
-        height: 110vh;
+        height: 100vh;
         width: 100%;
-        background: url("/Img_3.png") center center no-repeat;
+        overflow: hidden;
+
+    }
+    .footer-top-part-image {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        transform: scale(1.2);
+        object-fit: cover;
     }
     .top-footer-wrapper {
         display: flex;

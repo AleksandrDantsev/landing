@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import { useGsapAnimation } from '~/composable/useGsapAnimation';
+import { threeImageBlock } from '~/data/gsapAnimation';
+
     interface Props {
         content: {
             titles: string[];
@@ -10,45 +14,60 @@
         };
     }
 
-    const props = defineProps<Props>();
+    const triggerBlock = ref();
+
+    onMounted(() => {
+        if (triggerBlock.value) {
+            useGsapAnimation(triggerBlock, threeImageBlock);
+        }
+
+      
+    })
+
+    defineProps<Props>();
+
+    
 
 </script>
 
 <template>
-  <div class="block-three" :class="content.backgroundColorClass">
+  <article class="block-three three-images" :class="content.backgroundColorClass" ref="triggerBlock">
         <div class="block-three-wrapper">
             <div class="block-part-one">
                 <div class="image-block-first">
                     <div class="stains" v-if="content.stainsImages[0]">
-                        <img :src="content.stainsImages[0]" alt=" " class="staing-image"></img>
+                        <img :src="content.stainsImages[0]" alt=" " class="staing-image lazy-img"></img>
                     </div>
-                    <img class="image-first" v-if="content.images[0]" :src="content.images[0]" alt="earing">
+                    <img class="image-first image-first-th lazy-img" v-if="content.images[0]" 
+                    :src="content.images[0]" 
+                    alt="earing"
+                    >
                 </div>
-                <div class="background-hand" v-if="content.stainsImages[1]">
-                    <img class="background-image-hand" :src="content.stainsImages[1]" alt="hand">
+                <div class="background-hand" v-if="content.stainsImages[1]" >
+                    <img class="background-image-hand image-hands-th lazy-img" :src="content.stainsImages[1]" alt="hand">
                 </div>
             </div>
             <div class="block-part-two">
-                <div class="centr-block-image" v-if="content.images[1]">
-                    <img class="image-second" :src="content.images[1]" alt="hands">
+                <div class="centr-block-image" v-if="content.images[1]" id="centr-block-image">
+                    <img class="image-second lazy-img" :src="content.images[1]" alt="hands">
                 </div>
             </div>
-            <div class="block-part-three">
+            <div class="block-part-three" >
                 <div class="text-block">
-                    <div class="title" :class="content.titlesFontSize || ''">
+                    <div class="title block-three-title-th" :class="content.titlesFontSize || ''">
                         <h2 v-for="title in content.titles" :key="title">{{ title }}</h2>
                     </div>
-                    <div class="text-content" :class="content.textContent.textClass">
+                    <div class="text-content block-three-text-th" :class="content.textContent.textClass">
                         <p>{{ content.textContent.text }}</p>
                     </div>
                     <div class="dots-bottom" v-if="content.stainsImages[2]">
-                        <img class="background-dots-bottom" :src="content.stainsImages[2]" alt="hand">
+                        <img class="background-dots-bottom lazy-img" :src="content.stainsImages[2]" alt="hand">
                     </div>
                 </div>
             </div>
         </div>
         <slot></slot>
-  </div>
+  </article>
 </template>
 
 
@@ -93,6 +112,7 @@
         width: 100%;
         height: 300px;
         object-fit: cover;
+        transition-duration: 100ms;
         transform: translateX(20%);
     }
     .block-part-one {
@@ -125,6 +145,7 @@
         left: -30%;
         width: 100%;
         height: 100%;
+
         object-fit: contain;
     }
     .text-block {
@@ -162,6 +183,7 @@
     .stains {
         position: absolute;
         top: -20%;
+        z-index: -5;
     }
     .staing-image {
         width: 100%;
@@ -197,5 +219,9 @@
             line-height: 1.3rem;
             transform: translateX(20%)
         }
+    }
+    .background-dots-bottom {
+        position: relative;
+        z-index: -5;
     }
 </style>

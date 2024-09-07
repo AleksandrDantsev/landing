@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+    import { ref, onMounted } from 'vue';
+    import { singlePhoto } from '~/data/gsapAnimation';
+    import { useGsapAnimation } from '~/composable/useGsapAnimation';
+
 
     interface Props {
         content: {
@@ -11,47 +15,57 @@
         currentImageInCollage?: string;
     }
 
+    const triggerBlock = ref();
+
+    onMounted(() => {
+        if (triggerBlock.value) {
+            useGsapAnimation(triggerBlock, singlePhoto);
+        }
+    })
+
     defineProps<Props>();
 
 </script>
 
 <template>
-    <article class="single-photo-block" :class="content.backgroundClass">
+    <article class="single-photo-block" :class="content.backgroundClass" ref="triggerBlock">
         <div class="single-photo-block-wrapper">
             <div class="text-container">
-                <div class="span-part-text">
+                <div class="span-part-text part-text-single-anim">
                     {{ content.titles[0] }}
                 </div>
                 <div class="color-line-wrapper">
-                    <div class="color-line"></div>
+                    <div class="color-line"></div>  
                 </div>
-                <div class="span-part-text">
+                <div class="span-part-text part-text-single-anim">
                     {{ content.titles[1] }}
                 </div>
             </div>
             <div class="image-container">
                 <div class="stain left-top-stain" v-if="content.stainsIMG[0]">
-                    <img :src="content.stainsIMG[0]" alt=" ">
+                    <img :src="content.stainsIMG[0]" alt=" " class="lazy-img">
                 </div>
                 <div class="stain right-top-stain" v-if="content.stainsIMG[1]">
-                    <img :src="content.stainsIMG[1]" alt=" ">
+                    <img :src="content.stainsIMG[1]" alt=" " class="right-top-stain-single-anim lazy-img">
                 </div>
-                <img :src="content.mainImage" alt=" " class="image" v-if="typeof content.mainImage === 'string'">
-                <img v-for="image in content.mainImage" v-else-if="Array.isArray(content.mainImage)"
-                            :key="image" 
-                            :src="image" 
-                            alt=" " 
-                            class="image images-collage"
-                            :class="{'active-image-collage': image === currentImageInCollage}"
-                            >
+                <div class="image-conteiner">
+                    <img :src="content.mainImage" alt=" " class="image image-single-anim lazy-img" v-if="typeof content.mainImage === 'string'">
+                    <img v-for="image in content.mainImage" v-else-if="Array.isArray(content.mainImage)"
+                                :key="image" 
+                                :src="image" 
+                                alt=" " 
+                                class="image images-collage image-single-anim lazy-img"
+                                :class="{'active-image-collage': image === currentImageInCollage}"
+                                >
+                </div>
                 <div class="content-text-block" v-if="content.textContent">
-                    <p>{{ content.textContent }}</p>
+                    <p class="content-single-anim">{{ content.textContent }}</p>
                 </div>
                 <div class="stain left-bottom-stain" v-if="content.stainsIMG[2]">
-                    <img :src="content.stainsIMG[2]" alt=" ">
+                    <img :src="content.stainsIMG[2]" alt=" " class="left-bottom-stain-single-anim lazy-img">
                 </div>
                 <div class="stain right-bottom-stain" v-if="content.stainsIMG[3]">
-                    <img :src="content.stainsIMG[3]" alt=" ">
+                    <img :src="content.stainsIMG[3]" alt=" " class="lazy-img">
                 </div>
             </div>
         </div>
@@ -67,9 +81,8 @@
             object-fit: contain;
         }
     }
-
     .light-brown-back {
-        background-color: #d1c7a7b6;
+        background-color: #bebdb6;
     }
 
     .gray-back {
@@ -92,7 +105,12 @@
     .image-container {
         position: relative;
         width: 35%;
-        height: 70%;
+        height: 60%;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     }
     .image {
         position: relative;

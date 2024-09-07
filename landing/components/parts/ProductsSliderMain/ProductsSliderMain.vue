@@ -1,6 +1,9 @@
 <script setup lang="ts">
     import Slider from '../Slider/Slider.vue';
     import type { TProductSlider }  from '~/types/type_products_slider';
+    import { ref, onMounted } from 'vue';
+    import { useGsapAnimation } from '~/composable/useGsapAnimation';
+    import { slider } from '~/data/gsapAnimation';
 
     interface Props {
         title: string;
@@ -11,21 +14,29 @@
     }
 
     defineProps<Props>();
+
+    const triggerBlock = ref();
+
+    onMounted(() => {
+        console.log(triggerBlock)
+        useGsapAnimation(triggerBlock, slider);
+})
+
     
 </script>
 
 <template>
-  <div class="slider-products-main">
+  <article class="slider-products-main">
         <div class="title-block">
-            <h2 class="title">
+            <h2 class="title title-products-anim">
                 {{ title }}
             </h2>
-            <div class="description">
+            <div class="description description-products-anim">
                 {{ description }}
             </div>
             <slot></slot>
         </div>
-        <div class="slider-wrapper">
+        <div class="slider-wrapper slider-anim" ref="triggerBlock">
             <Slider :array-slides="slidesData" 
                     :slides-per-view="4" 
                     :space-between="spaceBetween || 25" 
@@ -39,7 +50,7 @@
                 </div>
             </Slider>
         </div>
-  </div>
+  </article>
 </template>
 
 <style lang="scss" scoped>
@@ -47,12 +58,14 @@
         position: relative;
         z-index: 10;
         min-height: 100vh;
+        overflow: hidden;
         background-color: #697e5b;
     }
     .slider-wrapper {
         position: relative;
-        bottom: -20px;
+        bottom: -5px;
         height: 50vh;
+        overflow: hidden;
     }
     .title-block {
         padding: 100px 0 50px 0;
