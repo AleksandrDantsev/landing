@@ -11,13 +11,16 @@
 * {
   box-sizing: border-box;
 }
-
+.lazy-img {
+  will-change: transform;
+}
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   height: 100%;
   scroll-behavior: smooth;
-  
+  overflow-x: hidden;
+  scrollbar-gutter: stable;
 }
 body {
   height: 100%;
