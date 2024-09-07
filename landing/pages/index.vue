@@ -1,9 +1,14 @@
 <script setup lang="ts">
+
   import Banner from "~/components/parts/Banner/Banner.vue";
   import ThreeImageBlock from "../components/parts/ThreeImageBlock/ThreeImageBlock.vue"
   import DoubleImage from "../components/parts/DoubleImage/DoubleImage.vue";
   import TellingBlock from "../components/parts/TellingBlock/TellingBlock.vue";
   import Collage from "~/components/parts/Collage/Collage.vue";
+  import SinglePhoto from "~/components/parts/SinglePhoto/SinglePhoto.vue";
+  import ProductsSliderMain from "~/components/parts/ProductsSliderMain/ProductsSliderMain.vue";
+
+  import { singleMainData } from "~/data/singleCardData";
 
     const tellingMainPage = {
             mainIMG: "/Img_2.webp",
@@ -39,6 +44,29 @@
         text: "Build your owntype of nail, wax & facial boutique",
     }
 
+    const sliderMainPage = {
+      title: 'We’re different.',
+      description: 'Our products focus on preventing aging in the places that matter most: hands & feet.'
+    }
+
+    const slides = [
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+        { nameSlide: null, image: '/Minty_Matcha.webp', description: null },
+    ];
+
+
+
+
 </script>
 
 <template>
@@ -49,6 +77,11 @@
     <TellingBlock :content="tellingMainPage" />
     <Collage :content="servicesData" />
     <DoubleImage :image="['/img-mood-2-2.webp', 'img-mood-2-1.webp']"/>
+    <ProductsSliderMain :slides-data="slides" 
+                        :title="sliderMainPage.title" 
+                        :description="sliderMainPage.description" 
+                        :start-link-slider="true" />
+    <SinglePhoto :content="singleMainData" />
   </div>
 </template>
 
