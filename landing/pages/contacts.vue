@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import ThreeImageBlock from "../components/Parts/ThreeImageBlock/ThreeImageBlock.vue"
+    import ThreeImageBlock from "../components/parts/ThreeImageBlock/ThreeImageBlock.vue"
     import ContactsBlock from "~/components/parts/ContactsBlock/ContactsBlock.vue";
     import Map from "~/components/parts/Map/Map.vue";
 
