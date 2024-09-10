@@ -1,11 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 // import { VitePWA } from 'vite-plugin-pwa'
 export default defineNuxtConfig({
-  target: 'static',
-  // Путь для статического хостинга (напр., /)
-  router: {
-    base: '/'
-  },
   app: {
     baseURL: '/landing',
     head: {
