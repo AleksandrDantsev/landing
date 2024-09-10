@@ -7,7 +7,7 @@
     const images = ref([
         { src: singleNailsData.mainImage[0], id: 'nails-quickie', label: 'Quickie' },
         { src: singleNailsData.mainImage[1], id: 'nails-classic', label: 'Classic' },
-        { src: singleNailsData.mainImage[2], id: 'nails-cure', label: 'Cure' },
+        { src: singleNailsData.mainImage[2], id: 'nails-Soin', label: 'Soin' },
     ]);
 
     const currentImageInCollage = ref<string>('');
@@ -28,7 +28,7 @@
                         break;
                     case "nails-classic": currentImageInCollage.value = singleNailsData.mainImage[1];
                         break;
-                    case "nails-cure": currentImageInCollage.value = singleNailsData.mainImage[2];
+                    case "nails-Soin": currentImageInCollage.value = singleNailsData.mainImage[2];
                         break;
                     default: return;
                 }
@@ -63,10 +63,12 @@
         flex-direction: column;
         justify-content: center;
         width: 100%;
+        height: 100%;
     }
+
     .switcher-type {
         position: relative;
-        top: -100px;
+        top: -100px; /* Изменено */
         z-index: 10;
         height: 120px;
         min-width: 40%;
@@ -80,13 +82,15 @@
             display: flex;
             justify-content: space-between;
             height: 100%;
+            padding: 0; /* Добавлено, чтобы убрать возможные отступы */
+            margin: 0; /* Добавлено, чтобы убрать возможные отступы */
         }
         li {
             opacity: 0.5;
             position: relative;
             height: 100%;
-            transition-duration: 300ms;
-            width: calc(100% / 3 - 15px);
+            transition: opacity 300ms; /* Обновлено для ясности */
+            width: calc(100% / 3 - 15px); /* Убедитесь, что это значение соответствует вашим ожиданиям */
         }
         button {
             width: 100%;
@@ -108,7 +112,42 @@
     .gray-back {
         background-color: #dbd3c3;
     }
+
     .bright {
         opacity: unset !important;
+    }
+
+    @media (max-width: 600px) {
+        .switcher-type {
+            width: 70%;
+        }
+        .circle-point {
+            display: inline-block;
+            width: 100%;
+        }
+        .bright {
+            width: 100%;
+        }
+        .switcher-type-inner {
+            button {
+                min-width: unset;
+                font-size: 1.2rem;
+                width: 100%;
+            }
+        }
+    }
+    @media (max-width: 400px) {
+        .switcher-type {
+            width: 90%;
+        }
+        .switcher-type-inner {
+            button {
+                min-width: unset;
+                width: 100%;
+            }
+        }
+        .image-container {
+            width: 90%;
+        }
     }
 </style>

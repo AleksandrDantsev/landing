@@ -1,11 +1,26 @@
+
+
 @font-face {
-    font-family: 'Poppins';
-    src: url('./Poppins-Regular.ttf') format('ttf'),
-         url('./Poppins-Italic.ttf') format('ttf');
+    font-family: 'poppinsitalic';
+    src: url('poppins-italic-webfont.woff2') format('woff2'),
+         url('poppins-italic-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-  }
-  
+
+}
+
+
+
+
+@font-face {
+    font-family: 'poppinsregular';
+    src: url('poppins-regular-webfont.woff2') format('woff2'),
+         url('poppins-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
   body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'poppinsregular', sans-serif;
   }

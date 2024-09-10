@@ -1,17 +1,18 @@
 <script lang="ts" setup>
 
+    defineProps<{ images: string[] }>()
 
 </script>
 
 <template>
     <article class="split-image-view gray-back">
         <div class="left-image-container">
-            <img src="/img-mood-4.webp" alt="" class="left-image lazy-img">
+            <img :src="images[0]" alt="" class="left-image lazy-img">
         </div>
         <div class="right-image-container">
             <div class="right-image-wrapper">
-                <img src="/img-mood-23.webp" alt="" class="right-image lazy-img">
-                <img src="/blue-dots-big-right.png" alt="" class="stain lazy-img">
+                <img :src="images[1]" alt="" class="right-image lazy-img">
+                <img src="/back_images/blue-dots-big-right.png" alt="" class="stain lazy-img">
             </div>
         </div>
     </article>
@@ -39,9 +40,6 @@
         width: 50%;
         height: 100%;
     }
-    .left-image {
-
-    }
     .right-image-container {
         display: flex;
         align-items: center;
@@ -64,5 +62,28 @@
         height: 150px;
         bottom: -30%;
         right: -30%;
+    }
+
+    @media (max-width: 750px) {
+        .split-image-view {
+            padding: 120px 0;
+            flex-direction: column-reverse;
+        }
+        .right-image-container {
+            width: 80%;
+            margin-bottom: 50px;
+        }
+        .left-image-container {
+            width: 100%;
+            z-index: 90;
+        }
+        .stain {
+            bottom: 50px;
+        }
+    }
+    @media (max-width: 450px) {
+        .split-image-view {
+            padding-bottom: 0;
+        }
     }
 </style>

@@ -9,9 +9,9 @@ export const addressLinks = [
     {
         titleOfList: "Address",        
         linkData: [
-            {name: "7460 Cimarron Market", link: "https://www.google.com/maps/search/7460+Cimarron+Market+Building+1,+Suite+300%3Cbr%2F%3EEl+Paso,+Texas+79911/@31.7547293,-106.2964835,16.39z", animate: false},    
-            {name: "Building 1, Suite 300", link: "#", animate: false},
-            {name: "El Paso, Texas 79911", link: "#", animate: false},
+            {name: "1234 Willow Creek Lane", link: "https://www.google.com/maps/search/7460+Cimarron+Market+Building+1,+Suite+300%3Cbr%2F%3EEl+Paso,+Texas+79911/@31.7547293,-106.2964835,16.39z", animate: false},    
+            {name: "Building 1, Suite 567", link: "#", animate: false},
+            {name: "Springfield, IL 62704", link: "#", animate: false},
         ]
     },
     {

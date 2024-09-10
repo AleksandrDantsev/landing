@@ -14,7 +14,7 @@
         };
         currentImageInCollage?: string;
     }
-
+    
     const triggerBlock = ref();
 
     onMounted(() => {
@@ -37,7 +37,7 @@
                 <div class="color-line-wrapper">
                     <div class="color-line"></div>  
                 </div>
-                <div class="span-part-text part-text-single-anim">
+                <div class="span-part-text part-text-single-anim right-text">
                     {{ content.titles[1] }}
                 </div>
             </div>
@@ -105,7 +105,7 @@
     .image-container {
         position: relative;
         width: 35%;
-        height: 60%;
+        min-height: 400px;
         img {
             width: 100%;
             height: 100%;
@@ -190,5 +190,99 @@
     }
     .active-image-collage {
         opacity: 1;
+    }
+    @media (orientation: landscape) {
+        .single-photo-block-wrapper {
+            padding: 100px;
+        }
+        .single-photo-block {
+            height: auto;
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .span-part-text {
+            font-size: 2rem;
+        }
+    }
+    @media (max-width: 900px) {
+        .color-line-wrapper {
+            min-width: 150px;
+        }
+        .span-part-text {
+            font-size: 1.8rem;
+        }
+    }
+    @media (max-width: 780px) {
+        .single-photo-block {
+            height: auto;
+            padding: 150px 0;
+        }
+        .single-photo-block-wrapper {
+            width: 100%;
+        }
+        .color-line-wrapper {
+            display: none;
+        }
+        .color-line-wrapper {
+            min-width: 100px;
+        }
+        .span-part-text {
+            font-size: 2.8rem;
+        }
+        .image-container {
+            width: 60%;
+        }
+        .content-text-block {
+            right: -15%;
+            width: 75%;
+            transform: translateY(-20px);
+            p {
+                font-size: 1rem;
+            }
+        }
+        .text-container {
+            width: 80%;
+            height: 110%;
+            flex-direction: column;
+            top: unset;
+            justify-content: space-between;
+
+        }
+        .right-text {
+            align-self: end;
+        }
+    }
+    @media (max-width: 580px) {
+        .span-part-text {
+            font-size: 2.2rem;
+        }
+        .text-container { 
+            height: 120%;
+        }
+    }
+    @media (max-width: 480px) {
+        .span-part-text {
+            font-size: 1.9rem;
+        }
+        .text-container { 
+            height: 115%;
+            width: 100%;
+        }
+        .image-container {
+            width: 75%;
+        }
+        .span-part-text {
+            text-align: center;
+            padding: 8px 0;
+        }
+        .image-conteiner {
+            img {
+                min-width: unset;
+            }
+        }
+        .content-single-anim { 
+            font-size: 11px !important;
+        }
     }
 </style>

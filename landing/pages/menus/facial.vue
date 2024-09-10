@@ -5,14 +5,13 @@
     import SinglePhoto from '~/components/parts/SinglePhoto/SinglePhoto.vue';
     import FramePhoto from '~/components/parts/FramePhoto/FramePhoto.vue';
     import { singleFacialData } from '~/data/singleCardData';
+    import { bannerDataService } from '~/data/bannersData';
+    import { useSetTilte } from "~/composable/useSetTitle";
 
-    const bannerDataMenus = {
-        image: "/Img_hero.webp",
-        text: "Our Services",
-    }
+    useSetTilte("Soin - Facial");
 
     const frameDataFacial = {
-        image: "/Img_introducing.webp",
+        image: "/small_img/Img_introducing_s.webp",
         text: ["Introducing", "for everyday", "and everyone!"],
         backgroundColorLeft: "gray-back",
         backgroundColorRight: "blue-back",
@@ -21,12 +20,9 @@
 </script>
 
 <template>
-    <Banner :content="bannerDataMenus" />
+    <Banner :content="bannerDataService" />
     <SwitcherPage />
     <SinglePhoto :content="singleFacialData" />
-    <DoubleImage :image="['/Img_mood_1.webp', '/Img_mood_2.webp']"/>
+    <DoubleImage :image="['/small_img/Img_mood_s.webp', '/small_img/mood_s.webp']"/>
     <FramePhoto :content="frameDataFacial" />
 </template>
-
-<style lang="scss" scoped>
-</style>

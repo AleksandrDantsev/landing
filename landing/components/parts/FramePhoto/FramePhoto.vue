@@ -17,7 +17,7 @@
     <article class="frame-image-block">
         <div class="frame-left" :class="content.backgroundColorLeft">
             <div class="frame-left-img-conteiner">
-                <img src="/Img_introducing.webp" alt=" " class="lazy-img">
+                <img :src="content.image" alt=" " class="lazy-img">
             </div>
         </div>
         <div class="frame-right">
@@ -80,6 +80,30 @@
             font-size: 1.2rem;
             letter-spacing: 0.5rem;
             color: #fff;
+        }
+    }
+
+    @media (max-width: 700px) {
+        .frame-image-block {
+            flex-direction: column;
+            height: auto;
+        }
+        .frame-left {
+            width: 100%;
+            padding: 60px 0;
+        }
+        .frame-right {
+            width: 100%;
+        }
+        .frame-right-text-conteiner {
+            width: 100%;
+            padding: 150px 0;
+        }
+    }
+    @media (max-width: 420px) {
+        .frame-right-text-conteiner {
+            width: 100%;
+            padding: 80px 0;
         }
     }
 </style>

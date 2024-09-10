@@ -23,7 +23,7 @@ onMounted(() => {
     }
 })
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
 </script>
 
@@ -102,7 +102,9 @@ const props = defineProps<Props>();
     .info-block-text {
         width: 35%;
         line-height: 20px;
-        color: #535353;
+        font-weight: 600;
+        color: #6e6e6e;
+        font-size: 15px;
     }
     .info-block-images {
         display: flex; 
@@ -134,5 +136,102 @@ const props = defineProps<Props>();
         position: absolute;
         z-index: -1;
         bottom: 0px;
+    }
+
+    @media (max-width: 1200px) {
+        .color-line {
+            height: 18%;
+        }
+        .image-one,
+        .image-two {
+            width: 180px;
+            height: 180px;
+        }
+        .title-block {
+            width: 100%;
+        }
+    }
+    @media (max-width: 960px) {
+        .color-line {
+            height: 10%;
+        }
+        .title-block {
+            h3 {
+                font-size: 3rem;
+            }
+        }
+    }
+    @media (max-width: 850px) {
+        .telling-block {
+            flex-direction: column;
+            padding: 50px 0 150px 0;
+        }
+        .main-image-block {
+            width: 60%;
+        }
+        .content-block {
+            width: 80%;
+            padding: 0;
+            margin: 20px auto;
+        }
+        .info-block {
+            flex-direction: column;
+        }
+        .title-block {
+            transform: none;
+        }
+        .info-block-text {
+            width: 90%;
+            margin-bottom: 50px;
+        }
+        .info-block-images {
+            justify-content: space-evenly;
+            width: 100%;
+        }
+        .image-one,
+        .image-two {
+            width: 280px;
+            height: 280px;
+            transform: none;
+        }
+        .image-one {
+            transform: translateY(40%);
+        }
+    }
+    @media (max-width: 650px) {
+        .main-image-block {
+            width: 70%;
+        }
+    }
+    @media (max-width: 500px) {
+        .image-one,
+        .image-two {
+            width: 180px;
+            height: 180px;
+        }
+        .title-block {
+            h3 {
+                font-size: 2rem;
+                text-align: center;
+            }
+        }
+        .main-image-block {
+            width: 100%;
+        }
+    }
+    @media (max-width: 350px) {
+        .image-one,
+        .image-two {
+            width: 120px;
+            height: 120px;
+        }
+        .title-block {
+            h3 {
+                font-size: 1.8rem;
+            }
+        }
+        .telling-block {
+            padding-bottom: 50px;
+        }
     }
 </style>

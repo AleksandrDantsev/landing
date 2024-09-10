@@ -117,6 +117,7 @@
     .explanation-name {
         margin-bottom: 10px;
         font-size: 1.1rem;
+        padding-right: 15px;
         p {
             color: #c42d2dd3;
         }
@@ -131,6 +132,41 @@
         span {
             font-size: 1.4rem;
             color: #c42d2da9;
+        }
+    }
+
+    @media (max-width: 750px) {
+        .name-price {
+            font-size: 2rem;
+        }
+        .explanation-name {
+           p {
+            font-size: 1rem;
+           } 
+        }
+    }
+    @media (max-width: 650px) {
+        .price-list-wrapper {
+            width: 90%;
+        }
+        .list-wrapper {
+            width: 90%;
+        }
+        .price-now, 
+        .price-before {
+            span {
+                font-size: 1.3rem;
+            }
+        }
+    }
+    @media (max-width: 400px) {
+        .name-price {
+            font-size: 1.8rem;
+        }
+        .explanation-name {
+           p {
+            font-size: 0.8rem;
+           } 
         }
     }
 </style>

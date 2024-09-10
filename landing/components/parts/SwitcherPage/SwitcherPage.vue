@@ -22,7 +22,7 @@
 </template>
 
 <style lang="scss" scoped>
-
+    @use 'sass:math';
     $heightSwitcher: 60px;
 
     .page-navigation-wrapper {
@@ -36,7 +36,7 @@
         position: absolute;
         height: 100%;
         width: 50%;
-        bottom: $heightSwitcher / 2 * -1;
+        bottom: math.div($heightSwitcher, 2) * -1;
         background-color: #fff;
         height: $heightSwitcher;
         max-width: 800px;
@@ -61,11 +61,14 @@
             transition-duration: 700ms;
             border-bottom: solid 2px transparent;
             &:hover {
-                border-bottom: solid 2px #e70000;
+                border-bottom: solid 2px #c54f7c;
             }
             &:hover .text-link-page {
-                color: #be2020;
+                color: #c54f7c;
             }
+        }
+        .text-link-page {
+            margin-left: 10px;
         }
         .text-link-page {
             color: #6d6d6d;
@@ -75,7 +78,21 @@
             transition-duration: 500ms;
         }
         .active-link {
-            border-bottom: solid 2px #e70000;
+            border-bottom: solid 2px #c54f7c;
+        }
+    }
+
+    @media (max-width: 750px) {
+        .page-navigation-inner {
+            width: 80%;
+        }
+    }
+    @media (max-width: 500px) {
+        .page-navigation-inner {
+            width: 90%;
+        }
+        .text-link-page {
+            font-size: 11px !important;
         }
     }
 </style>

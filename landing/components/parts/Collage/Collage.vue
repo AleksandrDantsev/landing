@@ -18,7 +18,6 @@
 
 
     onMounted(() => {
-        console.log(triggerBlock)
         useGsapAnimation(triggerBlock, collage);
     })
 
@@ -31,7 +30,7 @@
         <div class="collage-wrapper">
             <div class="title title-collage-anim">
                 <div class="flower">
-                    <img src="/flower.png" alt=" " class="lazy-img">
+                    <img src="/back_images/flower.png" alt=" " class="lazy-img">
                 </div>
                 <h3>{{ content.nameBlock }}</h3>
             </div>
@@ -94,7 +93,7 @@
         padding-bottom: 150px;
     }
     .collage-wrapper {
-        width: 70%;
+        width: 85%;
         margin: 50px auto;
     }
     .title {
@@ -189,8 +188,8 @@
         margin: 15px 0 20px 0;
         cursor: pointer;
         a {
-            color: #e23f3f;
-            text-decoration: underline;
+            color: #db5858;
+            font-weight: 600;
         }
     }
     .image-right {
@@ -225,6 +224,66 @@
             object-fit: cover;
             width: 100%;
             height: 100%;
+        }
+    }
+    @media (max-width: 780px) {
+        .collage {
+            height: auto;
+        }
+        .blocks {
+            flex-direction: column;
+            align-items: center;
+        }
+        .center-block {
+            width: 100%;
+        }
+        .left-block {
+            width: 70%;
+            z-index: 99;
+        }
+        .right-block {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 70%;
+            z-index: 99;
+            margin-top: -50px;
+            margin-left: unset;
+        }
+        .image-right {
+            right: unset;
+        }
+        .right-text {
+            p {
+                font-size: 3.4rem;
+                text-align: center;
+            }
+        }
+        .apply-email {
+            text-align: center;
+            margin-top: 50px;
+        }
+    }
+    @media (max-width: 550px) {
+        .collage-wrapper {
+            width: 85%;
+        }
+        .right-text {
+            p {
+                font-size: 1.5rem;
+                line-height: 2rem;
+            }
+        }
+        .collage {
+            padding-bottom: 60px;
+        }
+        .title {
+            margin-bottom: 40px;
+        }
+        .left-text-content {
+            margin-top: 40px;
+        }
+        .left-title {
+            display: none;
         }
     }
 </style>

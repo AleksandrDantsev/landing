@@ -36,7 +36,7 @@ import { threeImageBlock } from '~/data/gsapAnimation';
             <div class="block-part-one">
                 <div class="image-block-first">
                     <div class="stains" v-if="content.stainsImages[0]">
-                        <img :src="content.stainsImages[0]" alt=" " class="staing-image lazy-img"></img>
+                        <img :src="content.stainsImages[0]" alt=" " class="staing-image lazy-img" />
                     </div>
                     <img class="image-first image-first-th lazy-img" v-if="content.images[0]" 
                     :src="content.images[0]" 
@@ -93,7 +93,7 @@ import { threeImageBlock } from '~/data/gsapAnimation';
         position: relative;
         width: 100%;
         min-height: 110vh;
-        padding: 100px 0;
+        padding: 100px 20px;
         z-index: -25;
     }
 
@@ -111,13 +111,13 @@ import { threeImageBlock } from '~/data/gsapAnimation';
     .image-first {
         width: 100%;
         height: 300px;
-        object-fit: cover;
+        object-fit: contain;
         transition-duration: 100ms;
         transform: translateX(20%);
     }
     .block-part-one {
         position: relative;
-        width: 30%;
+        width: auto;
     }
     .block-part-two {
         width: 35%;
@@ -132,6 +132,7 @@ import { threeImageBlock } from '~/data/gsapAnimation';
         object-fit: cover;
         z-index: -1;
         width: 100%;
+        min-width: 250px;
         height: 500px;
     }
     .background-hand {
@@ -224,4 +225,113 @@ import { threeImageBlock } from '~/data/gsapAnimation';
         position: relative;
         z-index: -5;
     }
+
+    @media (max-width: 950px) {
+        .block-three-wrapper {
+            width: 85%;
+        }
+    }
+    @media (max-width: 850px) {
+        .block-three-wrapper {
+            flex-direction: column;
+        }
+        .block-part-one {
+            position: absolute;
+            bottom: 25%;
+            left: 10%;
+        }
+        .block-part-two {
+            width: 70%;
+        }
+        .image-first-th {
+            height: 260px;
+
+        }
+        .stains {
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+        }
+        .block-part-three {
+            width: 100%;
+        }
+        .block-three-title-th {
+            text-align: right;
+        }
+        .background-hand {
+            position: absolute;
+            height: 200px;
+            top: 15%;
+            right: -60%;
+        }
+        .title {
+            margin: 30px 0 30px auto;
+            text-align: right;
+            h2 {
+                font-size: 3rem;
+
+            }
+        }
+        .text-content {
+            width: 55%;
+            margin: 30px 0 30px auto;
+            text-align: left;
+        }
+    }
+    @media (max-width: 650px) {
+        .stains {
+            right: -10%;
+            width: 300px;
+            height: 300px;
+        }
+        .text-content {
+            p {
+                font-size: 1.3rem;
+                line-height: 1.5rem;
+            }
+        }
+    }
+    @media (max-width: 650px) {
+        .background-hand {
+            display: none;
+        }
+        .block-part-two {
+            width: 90%;
+        }
+        .stains {
+            display: none;
+        }
+        .text-content {
+            width: auto;
+            margin: 0 auto;
+            p {
+                color: #fff;
+            }
+        }
+        .block-part-one {
+            bottom: 20%;
+        }
+        .title {
+            margin-top: 70px;
+            h2 {
+                transform: unset;
+                text-align: left;
+            }
+        }
+    }
+    @media (max-width: 350px) {
+        .block-part-two {
+            width: 100%;
+        }
+    }
+    @media (max-width: 300px) {
+        .block-part-two {
+            width: 100%;
+        }
+        .image-first {
+            display: none;
+        }
+    }
+
 </style>

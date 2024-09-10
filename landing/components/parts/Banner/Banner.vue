@@ -2,10 +2,13 @@
 import { onMounted, ref } from 'vue';
 import { useGsapAnimation } from '~/composable/useGsapAnimation';
 import { header } from '~/data/gsapAnimation'; 
+import ImgSet from '~/components/UI/ImgSet.vue';
 
     interface Props {
         content: {
             image: string;
+            imageMiddle: string,
+            imageSmall: string,
             text: string;
         },
     }
@@ -25,7 +28,10 @@ import { header } from '~/data/gsapAnimation';
 <template>
     <article class="banner" ref="triggerBlock">
         <div class="banner-image">
-            <img :src="content.image" alt=" " class="banner-image-anim">
+            <ImgSet :src="content.image" 
+                    :img-per="[`${content.image} 1900w`, 
+                    `${content.imageMiddle} 1200w`, 
+                    `${content.imageSmall} 600w`]" />
         </div>
         <div class="banner-greating">
             <h2 class="banner-greating-text">
@@ -73,6 +79,31 @@ import { header } from '~/data/gsapAnimation';
     @media (max-width: 950px) {
         .banner-greating {
             font-size: 2.5rem;
+        }
+    }
+    @media (max-width: 750px) {
+        .banner {
+            height: 80vh;
+        }
+        .banner-greating {
+            font-size: 2.2rem;
+        }
+    }
+    @media (max-width: 550px) {
+        .banner-greating {
+            font-size: 1.8rem;
+        }
+        .banner {
+            height: 80vh;
+        }
+        .banner-greating {
+            top: 45%;
+        }
+    }
+    @media (max-width: 350px) {
+        .banner-greating {
+            font-size: 1.5rem;
+            line-height: 2rem;
         }
     }
 </style>

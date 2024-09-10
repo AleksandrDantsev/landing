@@ -48,5 +48,13 @@
     .wax-menu-list {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+    @media (max-width: 600px) {
+        .wax-menu-block {
+            width: 100%;
+            max-width: unset;
+        }
     }
 </style>

@@ -6,15 +6,16 @@
     import PriceList from '~/components/parts/PriceList/PriceList.vue';
     import SwitchTypeNails from '~/hoc/SwitchTypeNails.vue';
     import ProductsSliderMain from '~/components/parts/ProductsSliderMain/ProductsSliderMain.vue';
-    import type { TProductSlider } from '~/types/type_products_slider';
-    import type { ProductCategory } from '~/data/productsData';
-    import { sliderMainPage } from '~/data/productsData';
-    import { bannerDataMenus } from '~/data/bannersData';
-    import { products } from '~/data/productsData';
+    import { type TProductSlider } from '~/types/type_products_slider';
+    import { type ProductCategory, sliderMainPage, products } from '~/data/productsData';
+    import { bannerDataService } from '~/data/bannersData';
+    import { useSetTilte } from "~/composable/useSetTitle";
 
-    
+    useSetTilte("Soin - Nails");
+
     const choisenCategoryProd = ref<TProductSlider>(products.all);
     const nameCategory = ref<string>('');
+    const isChangeSliders = ref(false);
 
 
     const changeCategoryProducts = (e: MouseEvent) => {
@@ -22,11 +23,12 @@
         if (target && target instanceof HTMLButtonElement && target.id) {
             const categoryID: ProductCategory = target.id as ProductCategory;
             if (categoryID in products) {
-
+                isChangeSliders.value = true;
                 setTimeout(() => {
                     nameCategory.value = categoryID;
                     choisenCategoryProd.value = products[categoryID];
-                }, 100)
+                    isChangeSliders.value = false;
+                }, 250)
                 
             }
         }
@@ -35,17 +37,17 @@
 </script>
 
 <template>
-    <Banner :content="bannerDataMenus" />
+    <Banner :content="bannerDataService" />
     <SwitcherPage />
     <SwitchTypeNails />
-    <DoubleImage :image="['/img-mood-2-12.webp', '/img-mood-1.webp']"/>
+    <DoubleImage :image="['/small_img/img-mood-2-12_s.webp', '/small_img/img-mood-1_s.webp']"/>
     <ProductsSliderMain :slides-data="choisenCategoryProd" 
                         :title="sliderMainPage.title" 
                         :description="sliderMainPage.description"
                         :start-link-slider="false"
                         :space-between="50"
+                        :is-change-sliders="isChangeSliders"
                         >
-        <!-- class="link" :class="{'anim': product === nameCategory}" -->
         <div class="switcher-products">
             <ul @click="changeCategoryProducts">
                 <li v-for="product in Object.keys(products)" :key="product" > 
@@ -61,6 +63,7 @@
 </template>
 
 <style lang="scss" scoped>
+
     .switcher-products {
         width: 50%;
         margin: 80px auto 0 auto;
@@ -103,6 +106,20 @@
        padding-bottom: 2px;
         &:hover::before {
             display: none;
+        }
+    }
+    @media (max-width: 750px) {
+        .switcher-products {
+            ul {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            li {
+                margin: 10px;
+            }
+        }
+        .switcher-products {
+            width: 80%;
         }
     }
 </style>

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-    import { computed } from 'vue';
     import { Swiper, SwiperSlide } from 'swiper/vue';
     import SwiperCore from "swiper";
     import { Autoplay } from 'swiper/modules';
@@ -20,14 +19,10 @@
         speed?: number;
         loop?: boolean;
         navigation?: boolean;
+        widthWindow: number;
     }
 
     defineProps<Props>();
-    const slots = useSlots();
-
-    const hasSlotContent = computed(() => {
-        return slots.default && slots.default().length > 0;
-    });
 
 
 
@@ -45,13 +40,13 @@
             :speed="Boolean(speed) !== false ? speed : 0"
             :autoplay="autoplay ? { delay: autoplayDelay, disableOnInteraction: true } : false"
             >
-            <SwiperSlide v-if="hasSlotContent && startLinkSlider">
+            <SwiperSlide v-if=" startLinkSlider && widthWindow > 600">
                 <slot></slot>
             </SwiperSlide>
             <SwiperSlide v-for="(slide, index) in arraySlides" :key="index">
                 <div class="description-side"><span>{{ slide.description }}</span></div>
                 <div class="image-wrapper">
-                    <img :src="slide.image" class="swiper-lazy" :alt="slide.nameSlide || ' '" loading="lazy"/>
+                    <img :src="slide.image" class="swiper-lazy lazy-img" :alt="slide.nameSlide || ' '" loading="lazy"/>
                     <div class="name" v-if="slide.nameSlide">{{ slide.nameSlide }}</div>
                 </div>
                 <div class="swiper-lazy-preloader"><div class="custom-preloader">werwer</div></div>
@@ -82,14 +77,10 @@
         }
     }
     .name {
+        position: relative;
         height: 10%;
-        font-size: 1.6rem;
-        margin-top: 4px;
+        font-size: 1.3rem;
         color: #dddddd;
-    }
-
-    .swiper-lazy {
-
     }
     .swiper-lazy-preloader {
         position: relative;
@@ -106,8 +97,8 @@
     .slider-wrapper {
         width: 100%;
         height: 100%;
+        will-change: transform;
         position: relative;
-        overflow: hidden;
     }
     .swiper {
         height: 100%;
@@ -118,7 +109,6 @@
         display: flex;
         justify-content: space-between;
         position: relative;
-        overflow: hidden;
         width: calc(100% / 5);
         height: 100%;
         img {

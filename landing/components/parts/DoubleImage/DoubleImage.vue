@@ -33,7 +33,7 @@
     .images-block {
         display: flex;
         width: 100%;
-        height: 110vh;
+        height: 95vh;
     }
     .image-content {
         width: 50%;
@@ -44,6 +44,15 @@
             width: 100%;
             height: 100%;
             transform: scale(1.5);
+        }
+    }
+    @media (max-width: 850px) {
+        .images-block {
+            height: auto;
+            flex-direction: column;
+        }
+        .image-content {
+            width: 100%;
         }
     }
 </style>

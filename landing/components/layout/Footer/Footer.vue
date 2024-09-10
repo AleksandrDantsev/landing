@@ -17,15 +17,15 @@
     <footer>
         <div class="footer-top-part" ref="triggerBlock">
             <div class="top-footer-wrapper">
-                <div class="top-inscription">Calling all Nail Techs and Waxing Specialists</div>
+                <div class="top-inscription">Attention Nail Technicians and Waxing Experts!</div>
                 <div class="to-join-us">
                     <p class="text-footer-anim">We invite</p>
                     <p class="text-footer-anim">you to join</p>
-                    <p class="text-footer-anim">Team Cure.</p>
+                    <p class="text-footer-anim">Team Soin.</p>
                 </div>
                 <div class="mail"><NuxtLink to="mailto:wena@gmail.com">wena@gmail.com</NuxtLink></div>
             </div>
-            <img src="/Img_3.png" alt=" " class="footer-top-part-image lazy-img">
+            <img src="/large_img/footer_l.webp" alt=" " class="footer-top-part-image lazy-img">
         </div>
         <div class="footer-bottom-part">
             <div class="footer-bottom-part-wrapper">
@@ -85,6 +85,8 @@
     .top-inscription {
         text-transform: uppercase;
         font-size: 16px;
+        font-weight: 600;
+        line-height: 25px;
         color: $colorText;
     }
     .to-join-us {
@@ -136,5 +138,23 @@
     .question {
         color: $colorText;
         font-size: 28px;
+    }
+
+    @media (max-width: 550px) {
+        .to-join-us {
+            font-size: 3rem;
+        }
+        .mail {
+            justify-content: start;
+        }
+        .footer-bottom-part-wrapper {
+            flex-direction: column;
+        }
+        .ques-block {
+            margin-bottom: 25px;
+        }
+        .footer-top-part {
+            height: 60vh;
+        }
     }
 </style>

@@ -1,11 +1,11 @@
 export const pricesNails = [
     {
         name: "Russian Style Manicure",
-        explanation: "Extended Wear. Reduced Hangnails. In-Depth Cuticle Removal.",
+        explanation: "Extended wear. Fewer hangnails. Thorough cuticle care.",
         cost: ["$69", "$69*"],
     },
     {
-        name: "Cure Manicure",
+        name: "Soin Manicure",
         explanation: "Choice of Scrub, Mask, and Moisturizer",
         cost: ["$40", "$55*"],
     },
@@ -20,7 +20,7 @@ export const pricesNails = [
         cost: ["$30", "$45*"],
     },
     {
-        name: "Cure Pedicure",
+        name: "Soin Pedicure",
         explanation: "Choice of Scrub, Mask, and Moisturizer",
         cost: ["$45", "$60*"],
     },

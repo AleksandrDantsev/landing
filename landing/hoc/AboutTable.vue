@@ -1,38 +1,25 @@
 <script lang="ts" setup>
+    import { greatingAboutPage } from "~/data/greatingBlockData";
     import ThreeImageBlock from "../components/parts/ThreeImageBlock/ThreeImageBlock.vue"
-
-
-    const greatingContactUsPage = {
-            titles: ["It’s simple.", "Cure is responsible, different", "and exciting."],
-            titlesFontSize: "title-size-middle",
-            textContent: {
-                textClass: "about-us-page-text", 
-                text: `Cure was founded in 2018 in El Paso, Texas. At Cure we focus on customer experience, health and happiness.`
-            },
-            images: ["/img-section-1-2_2x.webp", "/img-section-1-3.webp"],
-            stainsImages: ["/grey-dots-big.png", null, "red-dots-bottom.png"],
-            backgroundColorClass: "blue-back",
-        };
-
 
 </script>
 
 <template>
     <div class="about-us">
-        <ThreeImageBlock :content="greatingContactUsPage">
+        <ThreeImageBlock :content="greatingAboutPage">
             <div class="addition-block">
                 <div class="addition-block-wrapper">
                     <div class="text">
                         <div class="text-title">
-                            <h3>Our goal is to provide El Paso a different type of nail & wax experience, one focused on nails and the skin around the nail by using responsible products.</h3>
+                            <h3>Our aim is to deliver a distinctive nail and wax experience, emphasizing the care of both nails and the surrounding skin with the use of environmentally-conscious products.</h3>
                         </div>
                         <div class="text-content">
-                            <p>We are a unique nail and wax boutique that curated a build-your-own style menu by creating its own natural and organic skincare products that are used in services.</p>
+                            <p>We are a one-of-a-kind  boutique offering a personalized menu, featuring our own handcrafted natural and organic skincare products used in all our treatments.</p>
                         </div>
                     </div>
                     <div class="image">
-                        <img class="dots-stain-back lazy-img" src="/grey-green-group.png" alt=" ">
-                        <img src="/img-section-1-1.webp" alt=" " class="lazy-img">
+                        <img class="dots-stain-back lazy-img" src="/back_images/grey-green-group.png" alt=" " />
+                        <img src="/small_img/img-section-1-1_s.webp" alt=" " class="lazy-img" />
                     </div>
                 </div>
             </div>
@@ -84,7 +71,49 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        top: -40%;
+        top: -30%;
         left: 40%;
+        z-index: -1;
+    }
+
+    @media (max-width: 850px) {
+        .addition-block-wrapper {
+            position: relative;
+            z-index: 50;
+        }
+        .image {
+            width: 55%;
+        }
+        .dots-stain-back {
+            top: -20%;
+        }
+    }
+    @media (max-width: 650px) {
+        .addition-block-wrapper {
+            width: 80%;
+        }
+        .text {
+            width: 50%;
+        }
+        .image {
+            width: 50%;
+            img {
+                transform: unset;
+            }
+        }
+        .dots-stain-back {
+            display: none;
+        }
+        .addition-block-wrapper {
+            width: 92%;
+        }
+    }
+    @media (max-width: 650px) {
+        .text {
+            width: 100%;
+        }
+        .image {
+            display: none;
+        }
     }
 </style>
